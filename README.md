@@ -41,6 +41,7 @@ ai-gateway-py/
 ├── .env.example         # 环境变量示例
 ├── requirements.txt     # Python 依赖
 ├── test_api.py          # API 连通性测试脚本
+├── test_local_gateway.py # Python SDK 测试示例
 └── app/
     └── static/
         └── index.html   # 管理面板 UI
@@ -97,6 +98,9 @@ Gateway 运行在 `http://localhost:8080`，管理面板在 `http://localhost:80
 ```bash
 # API 连通性测试
 python test_api.py
+
+# Python SDK 测试（使用 OpenAI 库）
+python test_local_gateway.py
 
 # 健康检查
 curl http://localhost:8080/health
