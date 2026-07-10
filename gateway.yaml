@@ -1,0 +1,43 @@
+# AI Gateway 配置文件
+
+gateway:
+  port: 8080
+  log_level: info
+
+# 上游 LLM 配置（智谱 AI）
+upstream:
+  provider: zhipu
+  base_url: https://open.bigmodel.cn/api/paas/v4
+  timeout_seconds: 60
+  max_retries: 1
+
+# 缓存配置
+cache:
+  redis_url: redis://localhost:6379
+  ttl_hours: 168  # 缓存保留 7 天
+
+  vector:
+    enabled: true
+    dimension: 2048  # embedding-3 完整维度，最高精度
+    similarity_threshold: 0.85  # 向量相似度阈值（越高越严格，减少误命中）
+
+  jaccard:
+    enabled: true
+    threshold: 0.75  # Jaccard 词重叠阈值
+
+# 去重配置
+deduplication:
+  enabled: true
+  max_wait_seconds: 30
+
+# 限流配置（个人使用建议关闭）
+rate_limiter:
+  enabled: false
+  max_requests: 60
+  window_seconds: 60
+
+# 熔断器配置
+circuit_breaker:
+  enabled: true
+  failure_threshold: 5
+  recovery_timeout_seconds: 30

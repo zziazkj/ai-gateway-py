@@ -1,0 +1,15 @@
+# 敏感信息
+.env
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+
+# IDE
+.vscode/
+.idea/
+
+# 数据
+data/
+*.log
